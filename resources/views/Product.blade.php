@@ -10,6 +10,7 @@
     <link href="/font-awesome/css/sharp-solid.css" rel="stylesheet" />
     <link href="/font-awesome/css/sharp-regular.css" rel="stylesheet" />
     <link href="/font-awesome/css/sharp-light.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <title>Product</title>
 </head>
 <style>
@@ -168,17 +169,17 @@
             @foreach($models as $model)
             <div class="card shadow p-2 w-full rounded-lg">
                 @if ($model->image != null)
-                <img src="/image/{{ $model->image }}" class="w-full rounded" />
+                <img src="/image/{{ $model->image }}" class="w-full rounded aspect-square object-fill" />
                 @else
-                <img src="/image/placeholder.webp" class="w-full rounded" />
+                <img src="/image/placeholder.webp" class="w-full rounded aspect-square object-fill" />
                 @endif
                 <div class="p-2">
                     <p class="card-title text-lg">{{ $model->name }}</p>
                     <p class="card-text"></p>
                     <div class="flex flex-row justify-between items-center">
-                        <button class="btn"><i class="fa-solid fa-minus"></i></button> 
-                        <input type="number" value="0" class="input input-bordered w-[60px]" min ="0"/>
-                        <button class="btn"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn" onclick="decrease('{{$model->meatball_id}}')"><i class="fa-solid fa-minus"></i></button> 
+                        <input type="number" id="number_{{$model->meatball_id}}" value="0" class="input input-bordered w-[60px]" min ="0"/>
+                        <button class="btn" onclick="increase('{{$model->meatball_id}}')"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -187,4 +188,16 @@
     </div>
 </body>
 
+<script>
+    function increase(id) {
+        let val = $("#number_" + id).val();
+        $("#number_" + id).val(+val + 1);
+    }
+
+    function decrease(id) {
+        let val = $("#number_" + id).val();
+        if (val == 0) return;
+        $("#number_" + id).val(+val - 1);
+    }
+</script>
 </html>
