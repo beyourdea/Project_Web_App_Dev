@@ -68,23 +68,6 @@
         margin-right: 20px;
     }
 
-    .food-item {
-        display: grid;
-        position: relative;
-        grid-template-rows: auto 1fr;
-        border-radius: 15px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-        transition: .2s ease-in-out;
-    }
-
-    .food-item img {
-        position: relative;
-        width: 100%;
-        height: 280px;
-        border-radius: 15px 15px 0 0;
-        cursor: pointer;
-    }
-
     .details {
         padding: 20px 10px;
         display: grid;
@@ -129,10 +112,6 @@
         cursor: pointer;
     }
 
-    .details>button:hover {
-        background-color: orangered;
-    }
-
     .banner img {
         width: 100%;
         height: 100%;
@@ -156,10 +135,47 @@
     .banner-info {
         text-align: center;
     }
+
+    .next-button {
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        background-color: black;
+        border: 2px solid black;
+        padding: 10px 20px;
+        border-radius: 60px;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .next-button:hover {
+        background-color: gray;
+        border-color: gray;
+    }
+
+    .cancel-button {
+        position: fixed;
+        bottom: 20px;
+        left: 30px;
+        background-color: black;
+        border: 2px solid black;
+        padding: 10px 20px;
+        border-radius: 60px;
+        font-size: 16px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .cancel-button:hover {
+        background-color: gray;
+        border-color: gray;
+    }
+
 </style>
 
 <body>
-    <h1 class = "heading">Wong Lukchin</h1>
+    <h1 class="heading">Wong Lukchin</h1>
     <div class="p-4">
         <div class="flex flex-row justify-end items-center mb-2">
             <p class="">EN</p>
@@ -168,7 +184,7 @@
             @foreach($models as $model)
             <div class="card shadow p-2 w-full rounded-lg">
                 @if ($model->image != null)
-                <img src="/image/{{ $model->image }}" class="w-full rounded" />
+                <img  src="/image/{{ $model->image }}" class="w-full rounded" />
                 @else
                 <img src="/image/placeholder.webp" class="w-full rounded" />
                 @endif
@@ -176,14 +192,21 @@
                     <p class="card-title text-lg">{{ $model->name }}</p>
                     <p class="card-text"></p>
                     <div class="flex flex-row justify-between items-center">
-                        <button class="btn"><i class="fa-solid fa-minus"></i></button> 
-                        <input type="number" value="0" class="input input-bordered w-[60px]" min ="0"/>
+                        <button class="btn"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" value="0" class="input input-bordered w-[60px]" min="0" />
                         <button class="btn"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+    </div>
+    <div>
+
+        <button class="next-button" type="Next">Next</button>
+        
+        <button class="cancel-button" type="cancel">Cancel</button>
+
     </div>
 </body>
 
