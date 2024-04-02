@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MeatballController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Product', [ProductController::class,'index'])->name('Product');
+Route::get('/product', [MeatballController::class,'index'])->name('product');
+
+
 
