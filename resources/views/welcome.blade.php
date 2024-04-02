@@ -15,7 +15,11 @@
         /*name shop*/
         .name-shop{
         display: inline-block;
-        transform: rotate(60deg); 
+        text-align: center; 
+        font-family: baskerville(serif);
+        font-size: 50px;
+        font-display: center;
+        font-style: ;
     }
         /*background*/
          body {
@@ -31,12 +35,12 @@
         /* order-botton*/
         .yellow-border-button {
             position: fixed;
-            bottom :20px;
+            bottom :60px;
             left: 50%;
             transform: translateX(-50%);
             background-color: yellow;
             border: 2px solid yellow;
-            padding: 10px 20px;
+            padding: 20px 30px;
             border-radius: 60px;
             font-size: 16px;
             color: black;
@@ -50,14 +54,16 @@
 
     </style>
     <body >
-    <div>
-        <form  method="post" action="Products">
-            <button class="yellow-border-button" type="Order">Order Here</button>
-        </form>
-    </div>
-    <?php
-    $text = "Wong Lu"; // ข้อความที่ต้องการแสดง
-    echo "<span class='curved-text'>$text</span>";
-    ?>
+        <div class ="shop name">
+           
+            <h1 class ="name-shop" > Wong Lukchin </h1>
+          
+            
+        </div>
+        <div>
+            <a href = "{{route('product')}}">
+                 <button class="yellow-border-button" type="Order">Order Here</button>
+            </a>
+        </div>
     </body>
 </html>

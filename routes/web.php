@@ -19,7 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/product', [MeatballController::class,'index'])->name('product');
+Route::get('/Product', [MeatballController::class,'index'])->name('product');
 
 
+
+Route::get('/Loading', function () {
+    return view('loadingscreen');
+});
 
