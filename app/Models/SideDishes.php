@@ -14,6 +14,7 @@ class SideDishes extends Model
     protected $primaryKey = 'side_dishes_id';
 
     protected $fillable = [
-        'name'
+        'name',
+        'image'
     ];
 }

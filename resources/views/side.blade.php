@@ -10,8 +10,9 @@
 
     <style>
         body {
-            padding-top: 20px;
+            padding:0;
             text-align: center;
+            font-family: 'Poppins', sans-serif;
 
         }
 
@@ -23,7 +24,7 @@
             text-align: center;
             text-decoration: none;
             display: inline-flexbox;
-            font-size: 16px;
+            font-size: 18px;
             margin: 4px 2px;
             cursor: pointer;
             transition-duration: 0.5s;
@@ -69,25 +70,87 @@
             background-color: gray;
             border-color: gray;
         }
+
+        .item {
+            position: center;
+            overflow: hidden;
+        }
+
+        .item img {
+            width: 7cm;
+            height: auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(10px);
+            gap: 1px;
+            padding: 10px;
+            
+
+        }
+
+        .container {
+            display: grid;
+            padding-top: 0;
+            grid-template-rows: 1.6cm minmax(auto, auto);
+            gap: 20px;
+           
+        }
+
+        .category {
+            padding-top: 0%;
+            background-color:#1B1B1B ;
+        }
+        h3{
+            color: whitesmoke;
+        }
     </style>
 </head>
 
 <body>
-    <h2>Make your selection</h2>
 
-    <div>
-        Sauce<br>
-        <div>
-            @foreach($models1 as $model)
-            <button class="button" onclick="selectItem(this)">{{ $model->name }}</button>
+    <div class="container">
+        <div class ="category">
+        <h3>Sauce</h3>
+        </div>
+        
+        <div class="grid-container">
+            @foreach($models1 as $models1)
+            <div class="item">
+                @if ($models1->image != null)
+                <img src="/image/{{ $models1->image }}" />
+                @else
+                <img src="/image/placeholder.webp" />
+                @endif
+                <div>
+                    <button class="button" onclick="selectItem(this)">{{ $models1->name }}</button>
+
+                </div>
+            </div>
             @endforeach
         </div>
     </div>
-    <div>
-        Vegetable<br>
-        <div>
-            @foreach($models2 as $model)
-            <button class="button" onclick="selectItem(this)">{{ $model->name }}</button>
+
+    <div class="container">
+        <div class="category">
+
+            <h3>Vegetable</h3>
+        </div>
+        <div class="grid-container">
+            @foreach($models2 as $models2)
+            <div class="item">
+                @if ($models2->image != null)
+                <img src="/image/{{ $models2->image }}" />
+                @else
+                <img src="/image/placeholder.webp" />
+                @endif
+                <div>
+                    <button class="button" onclick="selectItem(this)">{{ $models2->name }}</button>
+
+                </div>
+            </div>
             @endforeach
         </div>
     </div>

@@ -19,6 +19,16 @@
         margin: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .top-right {
+        text-align: right;
+        padding-right: 20px;
     }
 
     body {
@@ -30,11 +40,9 @@
 
     .logo {
         margin-top: 30px;
-        position:absolute;
+        position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 5cm;
+        width: 2cm;
         height: auto;
     }
 
@@ -106,13 +114,15 @@
 </style>
 
 <body>
+    <h1>SELECT THAT YOU LIKE</h1>
+    <p>EN</p>
     <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaCgt3DwpXR8AMCps3gs6BGjbY0iqZ1ITwjEOlP3uBtBk7PecL9NrE31PCwUZAuwXxGTsKV1Qph_URP9bJPG9roSiod=w1866-h994-v0">
     <div class="card flex flex-row justify-end items-center mb-2 ">
-        <p class="">EN</p>
+
     </div>
 
     <div class="p-40">
-        <div class="grid grid-cols-4 gap-3 w-full bg-#fcfbf4">
+        <div class="grid grid-cols-4 gap-3 w-full">
             @foreach($models as $model)
             <div class="card shadow p-5 w-full rounded-lg">
                 @if ($model->image != null)

@@ -15,6 +15,7 @@ class Sauce extends Model
 
     protected $fillable = [
         'sauce_id',
-        'name'
+        'name',
+        'image'
     ];
 }
