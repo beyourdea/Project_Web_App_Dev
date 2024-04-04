@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MeatballController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SideDishController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,6 @@ Route::get('/', function () {
 
 Route::get('/Product', [MeatballController::class,'index'])->name('product');
 
-Route::get('/Loading', function () {
-    return view('loadingscreen');
-});
+Route::get('/SideDish', [SideDishController::class,'index'])->name('side');
+
 

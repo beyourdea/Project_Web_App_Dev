@@ -24,14 +24,17 @@
     body {
         background-color: white;
         font-family: 'Poppins', sans-serif;
+        padding: 25px;
+        margin: 30px 25px 40px 25px;
     }
 
     .menu {
         padding: 0 10px 30px 10px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(calc(350px - 14px), 1fr));
         grid-gap: 30px 40px;
     }
+
 
     .heading {
         background: white;
@@ -107,34 +110,10 @@
         background-color: orange;
         border: none;
         color: white;
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-weight: 300;
         border-radius: 5px;
         cursor: pointer;
-    }
-
-    .banner img {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .banner {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url(https://i.pinimg.com/236x/1a/eb/b8/1aebb8f6934a8d4d522e77fafa46614f.jpg);
-        z-index: -1;
-        background-size: cover;
-        background-position: center;
-        filter: brightness(50%);
-    }
-
-    .banner-info {
-        text-align: center;
     }
 
     .next-button {
@@ -143,7 +122,7 @@
         right: 30px;
         background-color: black;
         border: 2px solid black;
-        padding: 10px 20px;
+        padding: 10px 30px;
         border-radius: 60px;
         font-size: 16px;
         color: white;
@@ -155,37 +134,36 @@
         border-color: gray;
     }
 
-    .cancel-button {
+    .back-button {
         position: fixed;
         bottom: 20px;
         left: 30px;
         background-color: black;
         border: 2px solid black;
-        padding: 10px 20px;
+        padding: 10px 30px;
         border-radius: 60px;
         font-size: 16px;
         color: white;
         cursor: pointer;
     }
 
-    .cancel-button:hover {
+    .back-button:hover {
         background-color: gray;
         border-color: gray;
     }
-
 </style>
 
 <body>
-    <h1 class="heading">Wong Lukchin</h1>
-    <div class="p-4">
-        <div class="flex flex-row justify-end items-center mb-2">
-            <p class="">EN</p>
-        </div>
-        <div class="grid grid-cols-5 gap-2 w-full">
+    <div class="flex flex-row justify-end items-center mb-2">
+        <p class="">EN</p>
+    </div>
+
+    <div class="p-40">
+        <div class="grid grid-cols-4 gap-2 w-full">
             @foreach($models as $model)
             <div class="card shadow p-2 w-full rounded-lg">
                 @if ($model->image != null)
-                <img src="/image/{{ $model->image }}" class="w-full rounded" />
+                <img src="/image/{{ $model->image }}" class="w-full rounded aspect-square object-fill" />
                 @else
                 <img src="/image/placeholder.webp" class="w-full rounded aspect-square object-fill" />
                 @endif
@@ -193,20 +171,25 @@
                     <p class="card-title text-lg">{{ $model->name }}</p>
                     <p class="card-text"></p>
                     <div class="flex flex-row justify-between items-center">
-                        <button class="btn"><i class="fa-solid fa-minus"></i></button> 
-                        <input type="number" value="0" class="input input-bordered w-[60px]" min ="0"/>
-                        <button class="btn"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn" onclick="decrease('{{$model->meatball_id}}')"><i class="fa-solid fa-minus"></i></button>
+                        <input type="number" id="number_{{$model->meatball_id}}" value="0" class="input input-bordered w-[60px]" min="0" />
+                        <button class="btn" onclick="increase('{{$model->meatball_id}}')"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+
     </div>
     <div>
+        <a href="{{route('side')}}">
+            <button class="next-button" type="submit">Next</button>
+        </a>
 
-        <button class="next-button" type="Next">Next</button>
-        
-        <button class="cancel-button" type="cancel">Cancel</button>
+
+        <a href="http://127.0.0.1:8000">
+            <button class="back-button" type="submit">Back</button>
+        </a>
 
     </div>
 </body>
@@ -223,4 +206,5 @@
         $("#number_" + id).val(+val - 1);
     }
 </script>
+
 </html>
