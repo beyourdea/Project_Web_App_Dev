@@ -24,4 +24,7 @@ Route::get('/Product', [MeatballController::class,'index'])->name('product');
 
 Route::get('/SideDish', [SideDishController::class,'index'])->name('side');
 
+Route::get('/Receipt', function () {
+    return view('receipt');
+});
 

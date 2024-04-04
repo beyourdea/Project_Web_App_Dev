@@ -96,13 +96,11 @@
         var selectedItems = [];
 
         function selectItem(button) {
-            // ถ้าปุ่มถูกเลือกอยู่แล้วให้ลบออกจาก selectedItems
             var index = selectedItems.indexOf(button.textContent);
             if (index !== -1) {
                 selectedItems.splice(index, 1);
                 button.classList.remove('selected');
             } else {
-                // ถ้ายังไม่ถูกเลือกให้เพิ่มลงใน selectedItems และเพิ่มคลาส selected ให้ปุ่มที่ถูกคลิก
                 selectedItems.push(button.textContent);
                 button.classList.add('selected');
             }

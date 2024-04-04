@@ -22,95 +22,27 @@
     }
 
     body {
-        background-color: white;
+        background-color: #ffff;
         font-family: 'Poppins', sans-serif;
         padding: 25px;
         margin: 30px 25px 40px 25px;
     }
 
-    .menu {
-        padding: 0 10px 30px 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(calc(350px - 14px), 1fr));
-        grid-gap: 30px 40px;
-    }
-
-
-    .heading {
-        background: white;
-        margin-bottom: 30px;
-        padding: 30px 0;
-        grid-column: 1/-1;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .heading>h1 {
-        font-weight: 700;
-        font-size: 20px;
-        color: orange;
-        letter-spacing: 10px;
-        text-transform: uppercase;
-
-    }
-
-    .heading a {
-        text-decoration: none;
-        color: orange;
-        font-weight: bold;
-        font-size: 50px;
-        margin-left: 20px;
-    }
-
-    .heading>h3 {
-        color: orange;
-        font-weight: 600;
-        font-size: 30px;
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        margin-top: 15px;
-        margin-right: 20px;
-    }
-
-    .details {
-        padding: 20px 10px;
-        display: grid;
-        grid-template-rows: auto 1fr 50px;
-        grid-row-gap: 15px;
-        color: black;
-    }
-
-    .details-sub {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-
-    .details-sub>h5 {
-        font-weight: 600;
-        font-size: 18px;
-    }
-
-    .details-sub>button {
-        font-weight: 600;
-        font-size: 18px;
-    }
-
-    .price {
-        text-align: right;
-    }
-
-    .details>p {
-        font-size: 15px;
-        line-height: 28px;
-        font-weight: 400;
-        align-self: stretch;
+    .logo {
+        margin-top: 30px;
+        position:absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5cm;
+        height: auto;
     }
 
     .btn {
         background-color: orange;
         border: none;
         color: white;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 300;
         border-radius: 5px;
         cursor: pointer;
@@ -151,25 +83,52 @@
         background-color: gray;
         border-color: gray;
     }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .details-left {
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    .details-right {
+        flex-grow: 1;
+        text-align: right;
+    }
+
+    .card {
+        min-width: 200px;
+    }
 </style>
 
 <body>
-    <div class="flex flex-row justify-end items-center mb-2">
+    <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaCgt3DwpXR8AMCps3gs6BGjbY0iqZ1ITwjEOlP3uBtBk7PecL9NrE31PCwUZAuwXxGTsKV1Qph_URP9bJPG9roSiod=w1866-h994-v0">
+    <div class="card flex flex-row justify-end items-center mb-2 ">
         <p class="">EN</p>
     </div>
 
     <div class="p-40">
-        <div class="grid grid-cols-4 gap-2 w-full">
+        <div class="grid grid-cols-4 gap-3 w-full bg-#fcfbf4">
             @foreach($models as $model)
-            <div class="card shadow p-2 w-full rounded-lg">
+            <div class="card shadow p-5 w-full rounded-lg">
                 @if ($model->image != null)
                 <img src="/image/{{ $model->image }}" class="w-full rounded aspect-square object-fill" />
                 @else
                 <img src="/image/placeholder.webp" class="w-full rounded aspect-square object-fill" />
                 @endif
                 <div class="p-2">
-                    <p class="card-title text-lg">{{ $model->name }}</p>
-                    <p class="card-text"></p>
+                    <div class="details">
+                        <div class="details-left">
+                            <p class="card-title">{{ $model->name }}</p>
+                        </div>
+                        <div class="details-right">
+                            <p class="card-text">{{ $model->price }} Bath</p>
+                        </div>
+                    </div>
                     <div class="flex flex-row justify-between items-center">
                         <button class="btn" onclick="decrease('{{$model->meatball_id}}')"><i class="fa-solid fa-minus"></i></button>
                         <input type="number" id="number_{{$model->meatball_id}}" value="0" class="input input-bordered w-[60px]" min="0" />
@@ -179,17 +138,16 @@
             </div>
             @endforeach
         </div>
-
     </div>
-    <div>
-        <a href="{{route('side')}}">
-            <button class="next-button" type="submit">Next</button>
-        </a>
+
+    <a href="{{route('side')}}">
+        <button class="next-button" type="submit">Next</button>
+    </a>
 
 
-        <a href="http://127.0.0.1:8000">
-            <button class="back-button" type="submit">Back</button>
-        </a>
+    <a href="http://127.0.0.1:8000">
+        <button class="back-button" type="submit">Back</button>
+    </a>
 
     </div>
 </body>
