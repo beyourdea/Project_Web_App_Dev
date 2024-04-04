@@ -111,8 +111,11 @@
     </script>
 
     <div>
+
         <button class="confirm-button" type="submit">Confirm</button>
-        <button class="back-button" type="submit">Back</button>
+        <a href="{{route('product')}}">
+            <button class="back-button" type="submit">Back</button>
+        </a>
     </div>
 </body>
 
