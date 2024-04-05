@@ -10,9 +10,21 @@
 
     <style>
         body {
-            padding:0;
+            padding: 0;
             text-align: center;
-            font-family: 'Poppins', sans-serif;
+            background: white;
+
+        }
+
+        .logo {
+            margin-top: 30px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            width: 10cm;
+            height: auto;
 
         }
 
@@ -35,13 +47,14 @@
             color: white;
         }
 
+
         .confirm-button {
             position: fixed;
             bottom: 20px;
             right: 30px;
             background-color: black;
             border: 2px solid black;
-            padding: 10px 20px;
+            padding: 13px 30px;
             border-radius: 60px;
             font-size: 16px;
             color: white;
@@ -49,8 +62,8 @@
         }
 
         .confirm-button:hover {
-            background-color: gray;
-            border-color: gray;
+            background-color: #00A36C;
+            border-color: #00A36C;
         }
 
         .back-button {
@@ -59,7 +72,7 @@
             left: 30px;
             background-color: black;
             border: 2px solid black;
-            padding: 10px 30px;
+            padding: 13px 30px;
             border-radius: 60px;
             font-size: 16px;
             color: white;
@@ -86,36 +99,43 @@
             grid-template-columns: repeat(4, 1fr);
             grid-auto-rows: minmax(10px);
             gap: 1px;
-            padding: 10px;
-            
+            padding: 5px;
+
 
         }
 
         .container {
             display: grid;
-            padding-top: 0;
+            padding-top: 135px;
             grid-template-rows: 1.6cm minmax(auto, auto);
             gap: 20px;
-           
+
         }
 
         .category {
-            padding-top: 0%;
-            background-color:#1B1B1B ;
+            padding-top: 0;
+            padding-left: 15px;
+            background-color: #1B1B1B;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
         }
-        h3{
+
+        h3 {
             color: whitesmoke;
         }
     </style>
 </head>
 
 <body>
+    <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
+
 
     <div class="container">
-        <div class ="category">
-        <h3>Sauce</h3>
+        <div class="category">
+            <h3>Sauce</h3>
         </div>
-        
+
         <div class="grid-container">
             @foreach($models1 as $models1)
             <div class="item">
@@ -172,10 +192,11 @@
     </script>
 
     <div>
-
-        <button class="confirm-button" type="submit">Confirm</button>
+        <!-- <a href="#" class="confirm-button"> -->
+        <button class="confirm-button" type="submit">CONFIRM</button>
+        <!-- </a> -->
         <a href="{{route('product')}}">
-            <button class="back-button" type="submit">Back</button>
+            <button class="back-button" type="submit">BACK</button>
         </a>
     </div>
 </body>

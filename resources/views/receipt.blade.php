@@ -18,7 +18,6 @@
             @endforeach
         </ul>
         <div>
-            <a href="{{ route('slide') }}" class="back-button">Back to Selection</a>
             <a href="#" class="confirm-button">Confirm Order</a>
         </div>
     </div>

@@ -35,7 +35,11 @@
         text-decoration: dotted;
     }
 
-
+    .translate {
+        padding-top: 0;
+        padding-right: 20px;
+        text-align: right;
+    }
 
     .yellow-border-button {
         position: fixed;
@@ -60,11 +64,7 @@
         border-color: gray;
         color: white;
     }
-    .translate {
-        padding-top: 0;
-        padding-right : 20px;
-        text-align: right;
-    }
+
     .welcome {
         padding-top: 60px;
     }
@@ -74,7 +74,7 @@
     <div class="translate">
         TH<br>
     </div>
-    <div class ="welcome">
+    <div class="welcome">
         Welcome<br>
     </div>
 

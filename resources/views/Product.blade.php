@@ -36,18 +36,23 @@
         font-family: 'Poppins', sans-serif;
         padding: 25px;
         margin: 30px 25px 40px 25px;
+        background-color: white;
     }
 
     .logo {
         margin-top: 30px;
         position: absolute;
         top: 0;
-        width: 2cm;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        width: 10cm;
         height: auto;
+        
     }
 
     .btn {
-        background-color: orange;
+        background-color: gold;
         border: none;
         color: white;
         font-size: 12px;
@@ -56,7 +61,7 @@
         cursor: pointer;
     }
 
-    .next-button {
+    .confirm-button {
         position: fixed;
         bottom: 20px;
         right: 30px;
@@ -69,9 +74,9 @@
         cursor: pointer;
     }
 
-    .next-button:hover {
-        background-color: gray;
-        border-color: gray;
+    .confirm-button:hover {
+        background-color: #00A36C;
+        border-color: #00A36C;
     }
 
     .back-button {
@@ -114,17 +119,12 @@
 </style>
 
 <body>
-    <h1>SELECT THAT YOU LIKE</h1>
-    <p>EN</p>
-    <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaCgt3DwpXR8AMCps3gs6BGjbY0iqZ1ITwjEOlP3uBtBk7PecL9NrE31PCwUZAuwXxGTsKV1Qph_URP9bJPG9roSiod=w1866-h994-v0">
-    <div class="card flex flex-row justify-end items-center mb-2 ">
+    <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
 
-    </div>
-
-    <div class="p-40">
+    <div class="p-20">
         <div class="grid grid-cols-4 gap-3 w-full">
             @foreach($models as $model)
-            <div class="card shadow p-5 w-full rounded-lg">
+            <div class="card shadow p-5 w-full rounded-lg bg-gray-20">
                 @if ($model->image != null)
                 <img src="/image/{{ $model->image }}" class="w-full rounded aspect-square object-fill" />
                 @else
@@ -151,12 +151,12 @@
     </div>
 
     <a href="{{route('side')}}">
-        <button class="next-button" type="submit">Next</button>
+        <button class="confirm-button" type="submit">CONFIRM</button>
     </a>
 
 
     <a href="http://127.0.0.1:8000">
-        <button class="back-button" type="submit">Back</button>
+        <button class="back-button" type="submit">BACK</button>
     </a>
 
     </div>

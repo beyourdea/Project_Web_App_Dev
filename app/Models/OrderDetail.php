@@ -16,6 +16,8 @@ class OrderDetail extends Model
     protected $fillable = [
         'meatball_id', 
         'amount', 
-        'order_id'
+        'order_id',
+        'side_dishes_id',
+        'side_dishes_id'
     ];
 }
