@@ -173,6 +173,22 @@
         if (val == 0) return;
         $("#number_" + id).val(+val - 1);
     }
+    function updateQuantity(id, quantity) {
+        $.ajax({
+            type: "POST",
+            url: "{{ route('updateQuantity') }}",
+            data: {
+                id: id,
+                quantity: quantity
+            },
+            success: function(response) {
+                console.log("Data updated successfully");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error updating data:", error);
+            }
+        });
+    }
 </script>
 
 </html>

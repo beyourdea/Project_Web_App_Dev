@@ -30,12 +30,11 @@ class OrderDetailController extends Controller
         $model = new OrderDetail();
 
         if ($validatedData['order_detail_id'] != null) {
-            $model = OrderDetail::findOrFail($validatedData['meatball_id']);
+            $model = OrderDetail::findOrFail($validatedData['order_detail_id']);
         }
+            
 
-        $model->name = $validatedData['name'];
-        $model->price = $validatedData['price'];
-        $model->amount = $validatedData['amount'];
+       
 
         $model->save();
 

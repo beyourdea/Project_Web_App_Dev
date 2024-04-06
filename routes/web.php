@@ -28,3 +28,6 @@ Route::get('/Receipt', function () {
     return view('receipt');
 });
 
+Route::post('/updateQuantity', 'ProductController@updateQuantity')->name('updateQuantity');
+
+

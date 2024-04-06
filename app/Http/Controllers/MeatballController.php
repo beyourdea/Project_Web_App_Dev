@@ -35,11 +35,13 @@ class MeatballController extends Controller
         }
 
         $model->name = $validatedData['name'];
-        $model->price = $validatedData['price'];
+        $model->price = $validatedData['priceD'];
         $model->amount = $validatedData['amount'];
 
         $model->save();
 
         return redirect()->route('product');
     }
+    
+
 }

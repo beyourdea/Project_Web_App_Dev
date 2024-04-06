@@ -51,7 +51,7 @@ class SideDishController extends Controller
             $models2 = SideDishes::find($validatedData['side_dish_id']);
         }
 
-        $models2->name = $validatedData['name']; // คุณอาจต้องปรับเปลี่ยนการเชื่อมโยงข้อมูลที่นี่ตามโมเดล SideDish
+        $models2->name = $validatedData['name']; 
         $models2->save();
 
         return redirect()->route('slide');
