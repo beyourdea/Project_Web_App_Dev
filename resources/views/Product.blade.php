@@ -150,9 +150,7 @@
         </div>
     </div>
 
-    <a href="{{route('side')}}">
-        <button class="confirm-button" type="submit">CONFIRM</button>
-    </a>
+    <button class="confirm-button" type="submit" onclick="saveModel()">CONFIRM</button>
 
 
     <a href="http://127.0.0.1:8000">
@@ -163,30 +161,43 @@
 </body>
 
 <script>
+    var data = {};
+
     function increase(id) {
         let val = $("#number_" + id).val();
         $("#number_" + id).val(+val + 1);
+        data[id] = {
+            id: id,
+            value: +val + 1,
+        }
     }
 
     function decrease(id) {
         let val = $("#number_" + id).val();
-        if (val == 0) return;
+        if (val == 0) {
+            delete data[id];
+            return;
+        }
         $("#number_" + id).val(+val - 1);
+        data[id] = {
+            id: id,
+            value: +val - 1,
+        }
     }
-    function updateQuantity(id, quantity) {
+
+    function saveModel() {
+        if (Object.keys(data).length <= 0 ) return;
         $.ajax({
             type: "POST",
-            url: "{{ route('updateQuantity') }}",
-            data: {
-                id: id,
-                quantity: quantity
+            url: "{{ route('save_model') }}",
+            data: data,
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             success: function(response) {
-                console.log("Data updated successfully");
+                console.log(data);
+                // window.location.href = "{{ route('side') }}"
             },
-            error: function(xhr, status, error) {
-                console.error("Error updating data:", error);
-            }
         });
     }
 </script>

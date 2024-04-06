@@ -33,10 +33,7 @@ class OrderDetailController extends Controller
             $model = OrderDetail::findOrFail($validatedData['order_detail_id']);
         }
             
-
-       
-
-        $model->save();
+            $model->save();
 
         return redirect()->route('receipt');
     }  

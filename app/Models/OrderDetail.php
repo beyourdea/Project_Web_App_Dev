@@ -17,7 +17,5 @@ class OrderDetail extends Model
         'meatball_id', 
         'amount', 
         'order_id',
-        'side_dishes_id',
-        'side_dishes_id'
     ];
 }

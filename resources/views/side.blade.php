@@ -125,12 +125,11 @@
             color: whitesmoke;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
     <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
-
-
     <div class="container">
         <div class="category">
             <h3>Sauce</h3>
@@ -145,8 +144,7 @@
                 <img src="/image/placeholder.webp" />
                 @endif
                 <div>
-                    <button class="button" onclick="selectItem(this)">{{ $models1->name }}</button>
-
+                    <button class="button sauce" onclick="selectItem(this)" id="{{ $models1->sauce_id }}" name="sauce">{{ $models1->name }}</button>
                 </div>
             </div>
             @endforeach
@@ -167,38 +165,71 @@
                 <img src="/image/placeholder.webp" />
                 @endif
                 <div>
-                    <button class="button" onclick="selectItem(this)">{{ $models2->name }}</button>
-
+                    <button class="button vegetable" onclick="selectItem(this)" id="{{ $models2->side_dishes_id }}" name="side_dishes">{{ $models2->name }}</button>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
 
-    <script>
-        var selectedItems = [];
-
-        function selectItem(button) {
-            var index = selectedItems.indexOf(button.textContent);
-            if (index !== -1) {
-                selectedItems.splice(index, 1);
-                button.classList.remove('selected');
-            } else {
-                selectedItems.push(button.textContent);
-                button.classList.add('selected');
-            }
-            console.log("Selected items:", selectedItems);
-        }
-    </script>
-
     <div>
-        <!-- <a href="#" class="confirm-button"> -->
-        <button class="confirm-button" type="submit">CONFIRM</button>
-        <!-- </a> -->
+        <button class="confirm-button" type="submit" onclick="getModel()">CONFIRM</button>
         <a href="{{route('product')}}">
             <button class="back-button" type="submit">BACK</button>
         </a>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            getModel();
+        });
+
+        var selectedItems = [];
+        var data = {
+            sauce: null,
+            side_dishes: null,
+            detail: "",
+        };
+
+        function selectItem(button) {
+            let index = selectedItems.indexOf(button.textContent);
+            let cls = Array.from(button.classList);
+            if (Array.isArray(cls)) {
+                if (cls.includes("sauce")) {
+                    let list = document.querySelectorAll(".sauce");
+                    list.forEach(element => {
+                        element.classList.remove("selected");
+                    });
+                }
+                if (cls.includes("vegetable")) {
+                    let list = document.querySelectorAll(".vegetable");
+                    list.forEach(element => {
+                        element.classList.remove("selected");
+                    });
+                }
+            }
+            if (button.classList)
+            if (index !== -1) {
+                selectedItems.splice(index, 1);
+                button.classList.remove('selected');
+                delete data[button.name]
+            } else {
+                selectedItems.push(button.textContent);
+                button.classList.add('selected');
+                data[button.name] = button.id;
+            }
+        }
+
+        function getModel() {
+            $.ajax({
+                type: "GET",
+                url: "{{ route('get_model') }}",
+                success: function(response) {
+                    console.log(response);
+                },
+            });
+        }
+    </script>
 </body>
 
 </html>

@@ -8,18 +8,8 @@
     <link rel="stylesheet" href="path/to/your/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Receipt</h1>
-        <h2>Selected Items:</h2>
-        something is cuming
-        <ul>
-            @foreach($selectedItems as $item)
-                <li>{{ $item }}</li>
-            @endforeach
-        </ul>
-        <div>
-            <a href="#" class="confirm-button">Confirm Order</a>
-        </div>
+    <div >
+        Connected
     </div>
 </body>
 </html>
