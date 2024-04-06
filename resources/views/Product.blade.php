@@ -48,7 +48,7 @@
         transform: translateX(-50%);
         width: 10cm;
         height: auto;
-        
+
     }
 
     .btn {
@@ -115,6 +115,9 @@
 
     .card {
         min-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>
 
@@ -124,7 +127,7 @@
     <div class="p-20">
         <div class="grid grid-cols-4 gap-3 w-full">
             @foreach($models as $model)
-            <div class="card shadow p-5 w-full rounded-lg bg-gray-20">
+            <div class="card shadow p-5 w-full rounded-lg bg-gray-20 ">
                 @if ($model->image != null)
                 <img src="/image/{{ $model->image }}" class="w-full rounded aspect-square object-fill" />
                 @else
@@ -133,7 +136,7 @@
                 <div class="p-2">
                     <div class="details">
                         <div class="details-left">
-                            <p class="card-title">{{ $model->name }}</p>
+                            <p class="card-title truncate text-ellipsis">{{ $model->name }}</p>
                         </div>
                         <div class="details-right">
                             <p class="card-text">{{ $model->price }} Bath</p>
@@ -186,7 +189,7 @@
     }
 
     function saveModel() {
-        if (Object.keys(data).length <= 0 ) return;
+        if (Object.keys(data).length <= 0) return;
         $.ajax({
             type: "POST",
             url: "{{ route('save_model') }}",
@@ -195,8 +198,7 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             success: function(response) {
-                console.log(data);
-                // window.location.href = "{{ route('side') }}"
+                window.location.href = "{{ route('side') }}"
             },
         });
     }

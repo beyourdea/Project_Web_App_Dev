@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function saveModel(Request $request) {
         $models = [];
         $object = $request->all();
-        $keys = array_keys( $object);
+        $keys = array_keys($object);
 
         foreach($keys as $key) {
             $model = new OrderDetail();
@@ -29,13 +29,13 @@ class OrderController extends Controller
             $models[] = $model;
         }
         
-        Session::flash('model', json_encode($models));
+        Session::flash('model', $models);
         return  json_encode($models);
     }
 
     public function getModel() {
         $models  = Session::get('model');
 
-        return response()->json($models);
+        return json_encode($models);
     }
 }
