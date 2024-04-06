@@ -42,6 +42,4 @@ class MeatballController extends Controller
 
         return redirect()->route('product');
     }
-    
-
 }
