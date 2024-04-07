@@ -60,6 +60,7 @@ class OrderController extends Controller
             }
 
             DB::commit();
+            return $order->order_id;
         } catch (\Exception $e) {
             DB::rollback();
             throw $e;

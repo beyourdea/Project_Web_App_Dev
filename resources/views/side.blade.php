@@ -239,7 +239,8 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 success: function(response) {
-                    window.location.href = "{{ route('receipt') }}"
+                    var url = "<?php echo url('/')?>"
+                    window.location.href = url+"/Receipt/"+response;
                 },
             });
         }

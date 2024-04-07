@@ -71,12 +71,15 @@
 </style>
 
 <body>
+    
     <div class="translate">
         TH<br>
     </div>
     <div class="welcome">
         Welcome<br>
     </div>
+
+    
 
     <div>
         <a href="{{route('product')}}">
