@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Sauce;
 use App\Models\SideDishes;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -29,7 +31,7 @@ class OrderController extends Controller
             $models[] = $model;
         }
         
-        Session::flash('model', $models);
+        Session::put('model', $models);
         return  json_encode($models);
     }
 
@@ -37,5 +39,30 @@ class OrderController extends Controller
         $models  = Session::get('model');
 
         return json_encode($models);
+    }
+
+    public function saveOrder(Request $request) {
+        DB::beginTransaction();
+        try {
+            $object = $request->all();
+            $order = new Order();
+            $list = $object["detail"];
+            $order->sauce_id = $object["sauce"];
+            $order->side_dishes_id = $object["side_dishes"];
+            $order->total_price = 0;
+            $order->save();
+            foreach($list as $item) {
+                $orderDetail = new OrderDetail();
+                $orderDetail->meatball_id = $item["meatball_id"];
+                $orderDetail->amount = $item["amount"];
+                $orderDetail->order_id =  $order->order_id;
+                $orderDetail->save();
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\MeatballController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SideDishController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
@@ -26,14 +27,13 @@ Route::post('/Save-Product', [OrderController::class,'saveModel'])->name('save_m
 
 Route::get('/Get-Product', [OrderController::class,'getModel'])->name('get_model');
 
+Route::post('/Save-Order', [OrderController::class,'saveOrder'])->name('save_order');
+
 Route::get('/Product', [MeatballController::class,'index'])->name('product');
 
 Route::get('/SideDish', [OrderController::class,'index'])->name('side');
 
-Route::get('/Receipt', function () {
-    return view('receipt');
-});
-
+Route::get('/Receipt/{id}', [PaymentController::class,'index'])->name('receipt');
 
 Route::get('/Loading', function () {
     return view('loadingscreen');

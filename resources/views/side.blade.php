@@ -173,7 +173,7 @@
     </div>
 
     <div>
-        <button class="confirm-button" type="submit" onclick="getModel()">CONFIRM</button>
+        <button class="confirm-button" type="submit" onclick="saveOrder()">CONFIRM</button>
         <a href="{{route('product')}}">
             <button class="back-button" type="submit">BACK</button>
         </a>
@@ -225,7 +225,21 @@
                 type: "GET",
                 url: "{{ route('get_model') }}",
                 success: function(response) {
-                    console.log(response);
+                    data.detail = JSON.parse(response);
+                },
+            });
+        }
+
+        function saveOrder() {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('save_order') }}",
+                data: data,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    window.location.href = "{{ route('receipt') }}"
                 },
             });
         }
