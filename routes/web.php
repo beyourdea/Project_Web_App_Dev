@@ -39,4 +39,6 @@ Route::get('/Loading', function () {
     return view('loadingscreen');
 });
 
-
+Route::get('/Shop', function () {
+    return view('dashbord');
+});
