@@ -65,7 +65,9 @@
         <p>Total Price: {{ $totalPrice }}</p>
     </div>
     <div class="d-flex justify-content-center">
-        <button class="confirm-button" type="submit">Pay</button>
+        <a href="http://127.0.0.1:8000/Payment">
+            <button class="confirm-button" type="submit">Pay</button>
+        </a>
     </div>
 </body>
 

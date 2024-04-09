@@ -37,15 +37,16 @@ Route::get('/SideDish', [OrderController::class,'index'])->name('side');
 
 Route::get('/Receipt/{id}', [PaymentController::class,'index'])->name('receipt');
 
-Route::get('/Loading', function () {
-    return view('loadingscreen');
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/Payment', function () {
+
+Route::get('/Payment',function () {
     return view('payment');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/Stock', function () {
-    return view('stockprocess');
+    return view('test');
+});
+Route::get('/Admin', function () {
+    return view('admin');
 });

@@ -20,4 +20,5 @@ class PaymentController extends Controller
       return view('receipt', ['models1' => $models1, 'models2' => $models2]);
     }
     
+    
 }
