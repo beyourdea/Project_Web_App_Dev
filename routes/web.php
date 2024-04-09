@@ -50,3 +50,9 @@ Route::get('/Payment',function () {
 Route::get('/Admin', function () {
     return view('admin');
 });
+
+Route::get('/Get-Product/{id}', [MeatballController::class,'show'])->name('get_product');
+
+Route::post('/Add-Product', [MeatballController::class,'store'])->name('add_product');
+
+Route::post('/Delete-Product/{id}', [MeatballController::class,'destroy'])->name('delete_product');

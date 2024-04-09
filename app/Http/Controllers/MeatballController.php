@@ -17,12 +17,13 @@ class MeatballController extends Controller
     public function show($id)
     {
         $model = Meatball::findOrFail($id);
-        return view('product_detail', ['model' => $model]);
+        return json_encode($model);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'meatball_id' => 'integer',
             'name' => 'required|string|max:50',
             'price' => 'required|integer',
             'amount' => 'required|integer',
@@ -35,11 +36,19 @@ class MeatballController extends Controller
         }
 
         $model->name = $validatedData['name'];
-        $model->price = $validatedData['priceD'];
+        $model->price = $validatedData['price'];
         $model->amount = $validatedData['amount'];
 
         $model->save();
 
         return redirect()->route('product');
+    }
+
+    public function destroy($id)
+    {
+        $user = Meatball::findOrFail($id);
+        $user->delete();
+
+        return 1;
     }
 }

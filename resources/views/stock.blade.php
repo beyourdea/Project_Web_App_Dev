@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -140,6 +141,29 @@
             margin-left: 250px;
             padding: 20px;
         }
+
+        .button {
+            bottom: 10px;
+            left: 10px;
+            background-color: gold;
+            border-radius: 60px;
+            color: #fff;
+            padding: 5px 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add {
+            position: right;
+            bottom: 10px;
+            right: 10px;
+            background-color: blue;
+            border-radius: 6px;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -149,10 +173,18 @@
 
         <a href="{{route('dashboard')}}" onclick="openTab('orders')">Orders</a>
         <a href="/#" onclick="openTab('products')">Stocks</a>
+        <a href="/">
+            <button class="button" type="submit">Log out</button>
+        </a>
     </div>
 
     <div class="container">
         <h1>Meatball's Stock</h1>
+        
+            <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#meatball">
+                Add
+            </button>
+       
         <table>
             <thead>
                 <tr>
@@ -160,6 +192,7 @@
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Price</th>
+                    <th>Tools</th>
                 </tr>
             </thead>
             <tbody>
@@ -169,6 +202,12 @@
                     <td>{{$model->name}}</td>
                     <td>{{$model->amount}}</td>
                     <td>{{$model->price}}</td>
+                    <td>
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meatball" onclick="getData('{{ $model->meatball_id }}')">Edit</button>
+                            <button type="button" class="btn btn-danger" onclick="deleteData('{{ $model->meatball_id }}')">Delete</button>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -193,7 +232,7 @@
 
     </div>
     <div>
-    <h1>Sauce's Stock</h1>
+        <h1>Sauce's Stock</h1>
         <table>
             <thead>
                 <tr>
@@ -214,8 +253,39 @@
     <div>
         <h1>Side dish's Stock</h1>
     </div>
-
-
+    <div class="modal" tabindex="-1" id="meatball">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="model_title">Add Meatball</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="meatball_id">
+                    <div class="mb-3">
+                        <label for="meatball_name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="meatball_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="meatball_amount" class="form-label">Amount</label>
+                        <input type="text" class="form-control" id="meatball_amount">
+                    </div>
+                    <div class="mb-3">
+                        <label for="meatball_price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="meatball_price">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addData()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
         function openTab(tabName) {
             var i, tabcontent;
@@ -224,6 +294,59 @@
                 tabcontent[i].style.display = "none";
             }
             document.getElementById(tabName).style.display = "block";
+        }
+
+        function addData() {
+            console.log(meatball_id.value);
+            $.ajax({
+                type: "POST",
+                url: "{{ route('add_product') }}",
+                data: {
+                    meatball_id: meatball_id.value || null,
+                    name: meatball_name.value,
+                    amount: meatball_amount.value,
+                    price: meatball_price.value,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    window.location.reload();
+                },
+            });
+        }
+
+        function getData(id) {
+            const url = "<?php echo url('/') ?>";
+            $.ajax({
+                type: "GET",
+                url: url + "/Get-Product/" + id,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    model_title.textContent = "Edit Meatball";
+                    meatball_id.value = data.meatball_id;
+                    meatball_name.value = data.name;
+                    meatball_amount.value = data.amount;
+                    meatball_price.value = data.price;
+                },
+            });
+        }
+
+        function deleteData(id) {
+            const url = "<?php echo url('/') ?>";
+            $.ajax({
+                type: "POST",
+                url: url + "/Delete-Product/" + id,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    window.location.reload();
+                },
+            });
         }
     </script>
 

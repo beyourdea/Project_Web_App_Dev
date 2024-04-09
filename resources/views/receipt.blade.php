@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="totle-price mt-2">
-        <p>Total Price: {{ $totalPrice }}</p>
+        <p>Total Price: {{ $totalPrice }} Bath</p>
     </div>
     <div class="d-flex justify-content-center">
         <a href="http://127.0.0.1:8000/Payment">

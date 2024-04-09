@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             position: relative;
-            left:10%;
+            left: 10%;
         }
 
 
@@ -140,14 +140,29 @@
             margin-left: 250px;
             padding: 20px;
         }
+
+        .button {
+            bottom: 10px;
+            left: 10px;
+            background-color: gold;
+            border-radius: 60px;
+            color: #fff;
+            padding: 10px 50px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="sidebar">
-        
+
         <a href="#" onclick="openTab('orders')">Orders</a>
         <a href="{{route('stock')}}" onclick="openTab('products')">Stocks</a>
+
+        <a href="/">
+            <button class="button" type="submit">Log out</button>
+        </a>
     </div>
     <div class="container">
         <h1>Order table</h1>
