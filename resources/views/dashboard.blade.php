@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>คำสั่งซื้อจากร้านลูกชิ้น</title>
+    <title>Dashboard</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -81,15 +81,31 @@
             font-size: 20px;
         }
 
-        .confirmed {
-            background-color: green;
+        .confirm-button {
+            background-color: red;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
             color: white;
+            cursor: pointer;
         }
 
-        .served {
+        .confirm-button.clicked {
             background-color: blue;
-            color: white;
         }
+
+        .serve-button {
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+        .serve-button.clicked {
+            background-color: blue;
+        }
+
     </style>
 </head>
 
@@ -113,18 +129,18 @@
             $first = true;
             $totalPrice = 0;
             @endphp
-            @foreach ($orderGroup as $data)
+            @foreach ($orderGroup as $model)
             <tr>
                 @if ($first)
-                <td rowspan="{{ count($orderGroup) }}">{{ $data->order_id }}</td>
+                <td rowspan="{{ count($orderGroup) }}">{{ $model->order_id }}</td>
                 @php $first = false @endphp
                 @endif
-                <td>{{ $data->meatball_name }}</td>
-                <td>{{ $data->order_detail.amount }}</td>
-                <td>{{ $data->sauce_name }}</td>
-                <td>{{ $data->side_dishes_name }}</td>
+                <td>{{ $model->meatball_name }}</td>
+                <td>{{ $model->meatball_price}}</td>
+                <td>{{ $model->sauce_name }}</td>
+                <td>{{ $model->side_dishes_name }}</td>
                 @php
-                $totalPrice += $data->meatball_price; 
+                $totalPrice += $model->meatball_price;
                 @endphp
             </tr>
             @endforeach
@@ -132,7 +148,10 @@
                 <td colspan="5"></td>
                 <td>{{ $totalPrice }}</td>
                 <td>
-                    <button class="confirmed" onclick="confirmOrder(this)">Confirm Order</button>
+                    <button class="confirm-button" onclick="confirmOrder(this)">Confirm</button>
+                </td>
+                <td>
+                    <button class="serve-button" onclick="serveOrder(this)">Serve</button>
                 </td>
             </tr>
             @endforeach
@@ -144,6 +163,8 @@
         button.innerHTML = 'Confirmed';
         button.classList.add('confirmed');
         button.setAttribute('disabled', 'true');
+        var serveButton = button.parentNode.nextElementSibling.querySelector('.serve-button');
+        serveButton.removeAttribute('disabled');
     }
 
     function serveOrder(button) {
@@ -152,6 +173,5 @@
         button.setAttribute('disabled', 'true');
     }
 </script>
-
 
 </html>
