@@ -7,6 +7,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,11 @@ Route::get('/Loading', function () {
     return view('loadingscreen');
 });
 
-Route::get('/Shop', function () {
-    return view('dashbord');
+Route::get('/Payment', function () {
+    return view('payment');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/Stock', function () {
+    return view('stockprocess');
 });

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="Artist.css">
     <title>คำสั่งซื้อจากร้านลูกชิ้น</title>
     <style>
         body {
@@ -80,13 +81,48 @@
             color: #28a745;
             font-size: 20px;
         }
+
+        .search-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>คำสั่งซื้อจากร้านลูกชิ้น</h1>
-        <table>
+
+        <!-- เพิ่มส่วนค้นหา -->
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="ค้นหาชื่อสินค้า..">
+        </div>
+
+        <table id="productTable">
             <thead>
                 <tr>
                     <th>คำสั่งซื้อ</th>
@@ -94,40 +130,54 @@
                     <th>จำนวน</th>
                     <th>ราคาต่อหน่วย</th>
                     <th>peyment</th>
-                    <th>สถานะ</th>
+                    <th>ยืนยันรายการ</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>ส้ม</td>
+                    <td>1</td>
                     <td>ลูกชิ้นหมู</td>
-                    <td>2</td>
+                    <td>2 ชิ้น</td>
                     <td class="price">30 บาท</td>
                     <td>ชำระเงินแล้ว</td>
-                    <td>เสร็จแล้ว</td>
+                    <td><button class="btn"> Button</button></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="price"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="price"></td>
-                    <td></td>
-                    <td></td>
+                    <td>2</td>
+                    <td>ลูกชิ้นไก่</td>
+                    <td>2 ชิ้น</td>
+                    <td class="price">30 บาท</td>
+                    <td>รอการชำระเงิน</td>
+                    <td><button class="btn"> Button</button></td>
                 </tr>
             </tbody>
         </table>
         <div class="total">
-            รวมทั้งหมด: <span>30 บาท</span>
+            รวมทั้งหมด: <span>60 บาท</span>
         </div>
     </div>
+
+    <script>
+        // Function to search for products
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("productTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1]; // Index 1 for product name column
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>
