@@ -9,6 +9,7 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,16 +38,15 @@ Route::get('/SideDish', [OrderController::class,'index'])->name('side');
 
 Route::get('/Receipt/{id}', [PaymentController::class,'index'])->name('receipt');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/Orders', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/Stock', [StockController::class, 'index'])->name('stock');
 
 Route::get('/Payment',function () {
     return view('payment');
 });
 
-Route::get('/Stock', function () {
-    return view('test');
-});
+
 Route::get('/Admin', function () {
     return view('admin');
 });

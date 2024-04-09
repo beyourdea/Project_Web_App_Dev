@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Meatball;
 use App\Models\Order;
 use App\Models\Sauce;
 use App\Models\SideDishes;
@@ -57,6 +58,9 @@ class OrderController extends Controller
                 $orderDetail->amount = $item["amount"];
                 $orderDetail->order_id =  $order->order_id;
                 $orderDetail->save();
+                $meatball = Meatball::findOrFail($item["meatball_id"]);
+                $meatball->amount -= $item["meatball_id"];
+                $meatball->save();
             }
 
             DB::commit();

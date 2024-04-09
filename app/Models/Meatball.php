@@ -12,11 +12,12 @@ class Meatball extends Model
     protected $table = 'meatball';
 
     protected $primaryKey = 'meatball_id';
+    public $timestamps = false;
 
     protected $fillable = [
-        'name', 
-        'price', 
-        'amount', 
+        'name',
+        'price',
+        'amount',
         'image'
     ];
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             position: relative;
-            left:10%;
+            left: 10%;
         }
 
 
@@ -144,82 +144,89 @@
 </head>
 
 <body>
+
     <div class="sidebar">
-        
-        <a href="#" onclick="openTab('orders')">Orders</a>
-        <a href="{{route('stock')}}" onclick="openTab('products')">Stocks</a>
+
+        <a href="{{route('dashboard')}}" onclick="openTab('orders')">Orders</a>
+        <a href="/#" onclick="openTab('products')">Stocks</a>
     </div>
+
     <div class="container">
-        <h1>Order table</h1>
+        <h1>Meatball's Stock</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Meatball Name</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amount</th>
                     <th>Price</th>
-                    <th>Sauce Name</th>
-                    <th>Side Dish Name</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($combinedData->groupBy('order_id') as $orderGroup)
-                @php
-                $first = true;
-                $totalPrice = 0;
-                @endphp
-                @foreach ($orderGroup as $model)
+                @foreach ($models1 as $model)
                 <tr>
-                    @if ($first)
-                    <td rowspan="{{ count($orderGroup) }}">{{ $model->order_id }}</td>
-                    @php $first = false @endphp
-                    @endif
-                    <td>{{ $model->meatball_name }}</td>
-                    <td>{{ $model->meatball_price}}</td>
-                    <td>{{ $model->sauce_name }}</td>
-                    <td>{{ $model->side_dishes_name }}</td>
-                    @php
-                    $totalPrice += $model->meatball_price;
-                    @endphp
-                </tr>
-                @endforeach
-                <tr>
-                    <td colspan="2">Total</td>
-                    <td>{{ $totalPrice }}</td>
-                    <td>
-                        <button class="confirm-button" onclick="confirmOrder(this)">Pay Order</button>
-                    </td>
-                    <td>
-                        <button class="serve-button" onclick="serveOrder(this)">Serve</button>
-                    </td>
+                    <td>{{$model->meatball_id}}</td>
+                    <td>{{$model->name}}</td>
+                    <td>{{$model->amount}}</td>
+                    <td>{{$model->price}}</td>
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($models2 as $model)
+                <tr>
+                    <td>{{$model->sauce_id}}</td>
+                    <td>{{$model->name}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+
+    </div>
+    <div>
+    <h1>Sauce's Stock</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($models3 as $model)
+                <tr>
+                    <td>{{$model->side_dishes_id}}</td>
+                    <td>{{$model->name}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+
+    </div>
+    <div>
+        <h1>Side dish's Stock</h1>
+    </div>
+
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent;
+            tabcontent = document.getElementsByTagName("div");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
+
 </body>
-<script>
-    function confirmOrder(button) {
-        button.innerHTML = 'Paid';
-        button.classList.add('Paid');
-        button.classList.add('clicked');
-        button.setAttribute('disabled', 'true');
-        var serveButton = button.parentNode.nextElementSibling.querySelector('.serve-button');
-        serveButton.removeAttribute('disabled');
-    }
-
-    function serveOrder(button) {
-        button.innerHTML = 'Served';
-        button.classList.add('served');
-        button.classList.add('clicked');
-        button.setAttribute('disabled', 'true');
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var serveButtons = document.querySelectorAll('.serve-button');
-        serveButtons.forEach(function(button) {
-            button.setAttribute('disabled', 'true');
-        });
-    });
-</script>
-
 
 </html>
