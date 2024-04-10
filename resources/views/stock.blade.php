@@ -112,30 +112,30 @@
         }
 
         .sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 2cm; /* Adjust the top margin */
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 2cm;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
 
-.sidebar a {
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
 
-.sidebar a:hover {
-    color: #f1f1f1;
-}
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
 
 
         .main-content {
@@ -171,7 +171,7 @@
 <body>
 
 
-    <div>
+    <div class="sidebar">
         <button id="google_translate_element"></button>
         <a href="{{route('dashboard')}}" onclick="openTab('orders')">Dashboard Orders</a>
         <a href="{{route('stock')}}">Products</a>

@@ -19,6 +19,7 @@
             max-width: 900px;
             margin: 50px auto;
             background-color: #ffffff;
+            top: 2cm;
             padding: 50px;
             border-radius: 30px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -115,7 +116,7 @@
             width: 250px;
             position: fixed;
             z-index: 1;
-            top: 0;
+            top: 2cm;
             left: 0;
             background-color: #111;
             overflow-x: hidden;
