@@ -19,7 +19,7 @@
             max-width: 900px;
             margin: 50px auto;
             background-color: #ffffff;
-            top: 2cm;
+            top: 3cm;
             padding: 50px;
             border-radius: 30px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -162,7 +162,7 @@
             <a href="#" onclick="openTab('orders')">Dashboard Orders</a>
             <a href="{{route('stock')}}" onclick="openTab('products')">Products</a>
 
-            <a href="/">
+            <a href="/Admin">
                 <button class="button" type="submit">Log out</button>
             </a>
     </div>

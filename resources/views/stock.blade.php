@@ -175,7 +175,7 @@
         <id="google_translate_element">
         <a href="{{route('dashboard')}}" onclick="openTab('orders')">Dashboard Orders</a>
         <a href="{{route('stock')}}">Products</a>
-        <a href="/">
+        <a href="/Admin">
             <button class="button" type="submit">Log out</button>
         </a>
     </div>
