@@ -90,16 +90,6 @@
 
 <body>
     <div id="google_translate_element"></div>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                    pageLanguage: 'en'
-                },
-                'google_translate_element'
-            );
-        }
-    </script>
     <div>
         <a href="http://127.0.0.1:8000/Admin">
             <button class="admin" type="submit"><img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZV02CqDJZprR6XCygCZfTNYHBXfx2rQgwiPz_DWXRijsNB6bQcFOCjp5-AhXVz0h8QhDwFQ5JGIfrAgRs_DlmE-seWptP5TsY=w1866-h994">
@@ -117,5 +107,15 @@
         </a>
     </div>
 </body>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
 
 </html>

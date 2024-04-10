@@ -157,8 +157,8 @@
 <body>
     <div class="sidebar">
 
-        <a href="#" onclick="openTab('orders')">Orders</a>
-        <a href="{{route('stock')}}" onclick="openTab('products')">Stocks</a>
+        <a href="#" onclick="openTab('orders')">Dashboard Orders</a>
+        <a href="{{route('stock')}}" onclick="openTab('products')">Products</a>
 
         <a href="/">
             <button class="button" type="submit">Log out</button>
