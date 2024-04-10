@@ -190,7 +190,9 @@
         </a>
     </div>
 
-    <script>
+   
+</body>
+<script>
         $(document).ready(function() {
             getModel();
         });
@@ -256,6 +258,5 @@
             });
         }
     </script>
-</body>
 
 </html>

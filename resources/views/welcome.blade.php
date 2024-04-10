@@ -78,13 +78,13 @@
         border-radius: 5px;
         padding: 10px 20px;
     }
-    
-    
+
+
     .admin img {
         width: 0.8cm;
-        height: auto; 
-        vertical-align: middle; 
-        margin-right: 5px; 
+        height: auto;
+        vertical-align: middle;
+        margin-right: 5px;
     }
 </style>
 
@@ -106,8 +106,7 @@
             <button class="yellow-border-button" type="submit">Tab to Order</button>
         </a>
     </div>
-</body>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -117,5 +116,7 @@
             );
         }
     </script>
+</body>
+
 
 </html>

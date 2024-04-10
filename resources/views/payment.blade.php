@@ -59,44 +59,35 @@
             /* Adjusted image width */
             height: auto;
         }
+
         .yellow-border-button {
-        position: fixed;
-        bottom: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #FFD700;
-        border: 2px solid #FFD700;
-        padding: 10px 50px;
-        border-radius: 60px;
-        font-weight: 500;
-        font: size 30px;
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        color: black;
-        cursor: pointer;
-        font-style: normal;
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 10px 50px;
+            border-radius: 60px;
+            font-weight: 500;
+            font: size 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: black;
+            cursor: pointer;
+            font-style: normal;
 
-    }
+        }
 
-    .yellow-border-button:hover {
-        background-color: gray;
-        border-color: gray;
-        color: white;
-    }
+        .yellow-border-button:hover {
+            background-color: gray;
+            border-color: gray;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div id="google_translate_element"></div>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
-    <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                    pageLanguage: 'en'
-                },
-                'google_translate_element'
-            );
-        }
-    </script>
     <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
     <h4>Select your payment</h4>
     <div class="container">
@@ -109,6 +100,7 @@
             <button class="yellow-border-button" type="submit">Submit your Order</button>
         </a>
     </div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
     <script>
         function selectPayment(button, paymentType) {
             var buttons = document.querySelectorAll('.button');
@@ -123,7 +115,16 @@
                 document.getElementById('paymentonline').style.display = 'none';
             }
         }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
     </script>
+
 </body>
 
 </html>
