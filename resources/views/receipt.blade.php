@@ -31,11 +31,23 @@
 </style>
 
 <body class="p-3">
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
     <?php
     $totalPrice = 0;
     ?>
     <div>
-        <pre><?php #echo json_encode($models1, JSON_PRETTY_PRINT); 
+        <pre><?php
                 ?></pre>
         <h1>Queue: {{ $models1[0]->order_id }}</h1>
     </div>

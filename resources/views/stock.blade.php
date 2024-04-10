@@ -168,6 +168,17 @@
 </head>
 
 <body>
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
 
     <div class="sidebar">
 
@@ -180,11 +191,11 @@
 
     <div class="container">
         <h1>Meatball's Stock</h1>
-        
-            <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#meatball">
-                Add
-            </button>
-       
+
+        <button type="button" class="add" data-bs-toggle="modal" data-bs-target="#meatball">
+            Add
+        </button>
+
         <table>
             <thead>
                 <tr>

@@ -61,6 +61,17 @@
 </head>
 
 <body>
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
     <div>
         <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihaCgt3DwpXR8AMCps3gs6BGjbY0iqZ1ITwjEOlP3uBtBk7PecL9NrE31PCwUZAuwXxGTsKV1Qph_URP9bJPG9roSiod=w1866-h994-v0">
     </div>

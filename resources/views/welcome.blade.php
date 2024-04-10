@@ -4,14 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>welcome</title>
-
-
+    <title>Welcome</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
 </head>
+
 <style>
     body {
         margin-top: 30px;
@@ -23,7 +20,6 @@
         image-resolution: auto;
         text-align: center;
         font-family: 'Courier New', Courier, monospace;
-
     }
 
     .logo {
@@ -51,12 +47,11 @@
         padding: 10px 50px;
         border-radius: 60px;
         font-weight: 500;
-        font: size 30px;
+        font-size: 20px;
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: black;
         cursor: pointer;
         font-style: normal;
-
     }
 
     .yellow-border-button:hover {
@@ -66,20 +61,55 @@
     }
 
     .welcome {
-        padding-top: 60px;
+        padding-top: 40px;
+    }
+
+    .admin {
+        position: fixed;
+        left: 92%;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+    
+    
+    .admin img {
+        width: 0.8cm;
+        height: auto; 
+        vertical-align: middle; 
+        margin-right: 5px; 
     }
 </style>
 
 <body>
-    
-    <div class="translate">
-        TH<br>
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <div>
+        <a href="http://127.0.0.1:8000/Admin">
+            <button class="admin" type="submit"><img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihZV02CqDJZprR6XCygCZfTNYHBXfx2rQgwiPz_DWXRijsNB6bQcFOCjp5-AhXVz0h8QhDwFQ5JGIfrAgRs_DlmE-seWptP5TsY=w1866-h994">
+            </button>
+        </a>
     </div>
+
     <div class="welcome">
         Welcome<br>
     </div>
-
-    
 
     <div>
         <a href="{{route('product')}}">

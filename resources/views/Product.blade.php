@@ -122,6 +122,18 @@
 </style>
 
 <body>
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
     <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
 
     <div class="p-20">

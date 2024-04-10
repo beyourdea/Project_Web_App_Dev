@@ -129,6 +129,17 @@
 </head>
 
 <body>
+    <div id="google_translate_element"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"> </script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
     <img class="logo" src="https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYjiJ8CvcZ-SOIfcamS9fL0ZYugcsvV6reTzqA4eKnjFoRgomZC4nLgDh8y__5itRAmLgKmZ5QKMcjy1qP1aPH9R69sb85aKEA=w1866-h994-v0">
     <div class="container">
         <div class="category">
@@ -209,15 +220,15 @@
                 }
             }
             if (button.classList)
-            if (index !== -1) {
-                selectedItems.splice(index, 1);
-                button.classList.remove('selected');
-                delete data[button.name]
-            } else {
-                selectedItems.push(button.textContent);
-                button.classList.add('selected');
-                data[button.name] = button.id;
-            }
+                if (index !== -1) {
+                    selectedItems.splice(index, 1);
+                    button.classList.remove('selected');
+                    delete data[button.name]
+                } else {
+                    selectedItems.push(button.textContent);
+                    button.classList.add('selected');
+                    data[button.name] = button.id;
+                }
         }
 
         function getModel() {
@@ -239,8 +250,8 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 success: function(response) {
-                    var url = "<?php echo url('/')?>"
-                    window.location.href = url+"/Receipt/"+response;
+                    var url = "<?php echo url('/') ?>"
+                    window.location.href = url + "/Receipt/" + response;
                 },
             });
         }
