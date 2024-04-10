@@ -158,12 +158,13 @@
 <body>
     <div class="sidebar">
 
-        <a href="#" onclick="openTab('orders')">Dashboard Orders</a>
-        <a href="{{route('stock')}}" onclick="openTab('products')">Products</a>
+            <id="google_translate_element">
+            <a href="#" onclick="openTab('orders')">Dashboard Orders</a>
+            <a href="{{route('stock')}}" onclick="openTab('products')">Products</a>
 
-        <a href="/">
-            <button class="button" type="submit">Log out</button>
-        </a>
+            <a href="/">
+                <button class="button" type="submit">Log out</button>
+            </a>
     </div>
     <div class="container">
         <h1>Order table</h1>

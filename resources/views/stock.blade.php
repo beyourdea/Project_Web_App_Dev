@@ -172,7 +172,7 @@
 
 
     <div class="sidebar">
-        <button id="google_translate_element"></button>
+        <id="google_translate_element">
         <a href="{{route('dashboard')}}" onclick="openTab('orders')">Dashboard Orders</a>
         <a href="{{route('stock')}}">Products</a>
         <a href="/">
